@@ -1,0 +1,52 @@
+int insertionsort(node**q)
+{
+node*c=*q;
+node *result=NULL;
+node*temp;
+while(c)
+{
+    temp=new node;
+    temp->data=c->data;
+    temp->next=NULL;
+    if(result==NULL)
+    {
+        result=temp;
+        *q=result;
+
+    }
+    else
+    {
+        result=*q;
+        if(result->data>temp->data)
+        {
+            temp->next=result;
+            result=temp;
+            *q=temp;
+
+        }
+        else if(result->next==NULL)
+        {
+            result->next=temp;
+        }
+        else{
+            while(result)
+            {  if(result->next==NULL)
+        {
+            result->next=temp;break;}
+                if(result->next->data>temp->data)
+                {
+                    temp->next=result->next;
+                    result->next=temp;
+                    break;
+                }
+                else{if(result->next==NULL)
+                {
+                    result->next=temp;break;
+                }
+                        result=result->next;
+                }
+            }
+        }
+    }
+c=c->next;}
+}
